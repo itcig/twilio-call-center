@@ -23,7 +23,7 @@ This application will be the front end portion of the app. It will likely commun
         - [ ] Caller Information
         - [ ] Call Actions
 
-## Application Componenet and Container Layout
+## Component and Container Layout
 
 [Checkout Lucid Chart](https://www.lucidchart.com/invitations/accept/be4d1971-73b0-4f66-a531-788e14174df5)
 
