@@ -1,0 +1,39 @@
+{
+  "name": "twilio-call-center",
+  "description": "Soft phone call center application for Twilio.",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "mobx": "^5.1.2",
+    "mobx-react": "^5.2.8",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itcig/twilio-call-center.git"
+  },
+  "keywords": [
+    "React.js",
+    "Javascript",
+    "MobX",
+    "Twilio"
+  ],
+  "contributers": [
+	{
+      "name": "Hunter Rancourt",
+      "email": "hrancourt@capinfogroup.com"
+	}
+  ]
+}
