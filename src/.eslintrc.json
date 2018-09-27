@@ -1,4 +1,4 @@
-{
+{ 
     "env": {
         "es6": true,
         "node": true
@@ -31,6 +31,13 @@
 			"after": true
 		}],
 		"eqeqeq": 2,
-		"space-in-parens": [1, "never"]
+		"space-in-parens": [1, "never"],
+		"comma-dangle": [1, {
+			"arrays": "only-multiline",
+			"objects": "only-multiline",
+			"imports": "only-multiline",
+			"exports": "only-multiline",
+			"functions": "ignore"
+		}]
 	}
 }

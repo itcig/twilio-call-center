@@ -115,6 +115,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "eslintIgnore": [
+	  "src/registerServiceWorker.js"
+	],
   "devDependencies": {
     "mobx-react-devtools": "^6.0.3"
   }

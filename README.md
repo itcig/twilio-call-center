@@ -27,6 +27,26 @@ This application will be the front end portion of the app. It will likely commun
 
 [Checkout Lucid Chart](https://www.lucidchart.com/invitations/accept/be4d1971-73b0-4f66-a531-788e14174df5)
 
+## State Planning
+
+Entire Application
+
+- User Authenticated
+- User Status
+- User Information (TBD)
+- ?UI (TBD)
+
+Component Specific
+
+- Phone Container
+  - Phone Number to be dialed
+  - Phone Settings (mic and speaker for browser to use etc.)
+- Agent Action Container
+  - UI (TBD)
+  - Reservation status (if there are reserved tasks)
+  - Caller Information (data returned from CIG API)
+  - Agent Input (call notes, call disposition, etc.)
+
 ## Environment Setup
 
 Clone the repository and then run `npm install`
