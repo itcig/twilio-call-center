@@ -26,3 +26,10 @@ This application will be the front end portion of the app. It will likely commun
 ## Application Componenet and Container Layout
 
 [Checkout Lucid Chart](https://www.lucidchart.com/invitations/accept/be4d1971-73b0-4f66-a531-788e14174df5)
+
+## Environment Setup
+
+The following variables will need to be added to a .env file in the root of the project
+- TWILIO_ACCOUNT_SID = "AC..."
+- TWILIO_AUTH_TOKEN = "..."
+- TWILIO_WORKSPACE_SID = "WS..."
