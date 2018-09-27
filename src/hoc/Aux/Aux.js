@@ -1,5 +1,7 @@
 /**
- * This is a simple wrapper to avoid using unnecessary additional html elements 
+ * This is a simple wrapper to avoid unnecessarily adding html elements
  */
 
-export default props => props.children;
+const Aux = props => props.children;
+
+export default Aux;
