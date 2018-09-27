@@ -29,7 +29,12 @@ This application will be the front end portion of the app. It will likely commun
 
 ## Environment Setup
 
+Clone the repository and then run `npm install`
+
 The following variables will need to be added to a .env file in the root of the project
 - TWILIO_ACCOUNT_SID = "AC..."
 - TWILIO_AUTH_TOKEN = "..."
 - TWILIO_WORKSPACE_SID = "WS..."
+
+Start the application by running `npm start`
+Access the app at http://localhost:3000/

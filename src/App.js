@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import classes from './App.css';
+import DevTools from 'mobx-react-devtools';
 
 class App extends Component {
-  render() {
-    return (
-      <div className={classes.App}>
-      </div>
-    );
-  }
+	state = {
+
+	}
+
+	render() {
+		return (
+			<div className={classes.App}>
+
+				<DevTools />
+			</div>
+		);
+	}
 }
 
 export default App;
