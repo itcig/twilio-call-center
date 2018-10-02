@@ -9,6 +9,8 @@ import Input from '../UI/Input/Input';
 
 class Auth extends Component {
 	state = {
+		isAuthenticated: false,
+		redirect: null,
 		formIsValid: false,
 		loading: false,
 		loginForm: {
@@ -48,7 +50,9 @@ class Auth extends Component {
 
 	loginSubmitHandler = event => {
 		event.preventDefault();
-		this.setState({ loading: true }); // form submitted update ui
+
+		this.setState({loading: true}); // form submitted update ui
+		this.props.authenticationHandler(); // tell app.js to make api call
 	}
 
 	//@TODO add error messages for which validation fails
@@ -97,7 +101,7 @@ class Auth extends Component {
 					)) }
 				</fieldset>
 				<div>
-					<Button btnType="Success" disabled={!this.state.formIsValid}>Login</Button>
+					<Button btnType="Success" className="authButton" disabled={!this.state.formIsValid}>Login</Button>
 				</div>
 			</form>
 		);

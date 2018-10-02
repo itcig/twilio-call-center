@@ -17,3 +17,12 @@
         width: 500px;
     }
 }
+
+.authButton {
+	background-color: purple;
+	color: white;
+}
+
+.Auth form fieldset {
+	border: none;
+}

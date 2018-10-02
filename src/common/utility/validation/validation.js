@@ -12,32 +12,32 @@ const checkValidity = (value, rules) => {
 		/* remove white space and make sure there is some input */
 		if (rules.required) {
 			isValid = !empty(value) && isValid;
-			console.log('[validation.js] checkValidity(): rules.required ->', isValid);
+			//console.log('[validation.js] checkValidity(): rules.required ->', isValid);
 		}
 
 		if (rules.minLength) {
 			isValid = isLength(value, rules.minLength) && isValid;
-			console.log('[validation.js] checkValidity(): rules.minLength ->', isValid);
+			//console.log('[validation.js] checkValidity(): rules.minLength ->', isValid);
 		}
 
 		if (rules.maxLength) {
 			isValid =  isLength(value, rules.maxLength) && isValid;
-			console.log('[validation.js] checkValidity(): rules.maxLength ->', isValid);
+			//console.log('[validation.js] checkValidity(): rules.maxLength ->', isValid);
 		}
 
 		if (rules.isNumber) {
 			isValid = isNumber(value) && isValid;
-			console.log('[validation.js] checkValidity(): rules.isNumber ->', isValid);
+			//console.log('[validation.js] checkValidity(): rules.isNumber ->', isValid);
 		}
 
 		if (rules.isString) {
 			isValid = isString(value) && isValid;
-			console.log('[validation.js] checkValidity(): rules.isString ->', isValid);
+			//console.log('[validation.js] checkValidity(): rules.isString ->', isValid);
 		}
 
 		if (rules.isEmail) {
 			isValid = isEmail(value) && isValid;
-			console.log('[validation.js] checkValidity(): rules.isEmail ->', isValid);
+			//console.log('[validation.js] checkValidity(): rules.isEmail ->', isValid);
 		}
 	}
 

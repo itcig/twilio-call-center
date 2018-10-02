@@ -7,21 +7,31 @@
     font: inherit;
     padding: 10px;
     margin: 10px;
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .Button:first-of-type {
-    margin-left: 0;
-    padding-left: 0;
+    /* margin-left: 0; */
+    /* padding-left: 0; */
 }
 
 .Button:disabled {
 	color: #CCC;
+	background-color: #eae7ec;
 	cursor: not-allowed;
+	border: 2px solid #CCC;
+}
+
+.Button:hover:enabled {
+	border: 2px solid rgb(105, 21, 138);
+    background-color: #884fb1;
 }
 
 .Success {
-    color: #5C9210;
+	/* color: #5C9210; */
+	border-radius: 3px;
+    border: 2px solid rgb(158, 78, 189);
+    background-color: #d29cf9;
 }
 
 .Danger {

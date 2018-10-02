@@ -8,14 +8,9 @@ import Aux from '../Aux/Aux';
  */
 
 //@TODO import Header Component and add above main element
+//@TODO import dashboard (this can hold header, admin, and agent components)
 
 class Layout extends Component {
-	state = {
-		user: {
-			userAuthenticated: false,
-			status: null,
-		},
-	};
 
 	render() {
 		return (
