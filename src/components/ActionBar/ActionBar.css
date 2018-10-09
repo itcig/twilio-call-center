@@ -1,0 +1,88 @@
+.ActionBar {
+	display: flex;
+	width: 80%;
+	justify-content: space-around;
+	margin: auto;
+	background-color: rgb(144, 48, 156);
+	border: 2px solid rgb(105, 21, 138);
+	color: #fff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+nav {
+	/* placeholder */
+}
+
+ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+	float: left;
+}
+
+li a,
+.navLinks {
+	display: block;
+    text-align: center;
+    padding: 14px 16px;
+	text-decoration: none;
+	color: white;
+}
+
+li a:hover:not(.active) {
+	/* border: 2px solid rgb(105, 21, 138); */
+    background-color: #b11fa4;
+}
+
+.active {
+    /* border: 2px solid rgb(105, 21, 138); */
+	background-color: rgba(173, 173, 173, 0.36);
+	color: white;
+}
+
+.activities {
+	transform: translateY(30%);
+}
+
+.dropdownButton {
+	background-color: rgba(173, 173, 173, 0.36);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+	transform: translateY(30%);
+	position: relative;
+    display: inline-block;
+}
+
+.dropdownContent {
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdownContent {
+	display: block;
+}
+
+.dropdownContent * {
+	color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownContent *:hover {
+	background-color: #f1f1f1
+}

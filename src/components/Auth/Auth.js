@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Auth.css';
+import { Redirect } from 'react-router-dom';
 
 import checkValidity from '../../common/utility/validation/validation';
 
@@ -7,10 +8,10 @@ import Loader from '../UI/Loader/Loader';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 
+//@TODO add a forgot username / password option
+
 class Auth extends Component {
 	state = {
-		isAuthenticated: false,
-		redirect: null,
 		formIsValid: false,
 		loading: false,
 		loginForm: {
@@ -48,6 +49,7 @@ class Auth extends Component {
 		},
 	};
 
+	//@TODO is this the best way to handle this scenario?
 	loginSubmitHandler = event => {
 		event.preventDefault();
 
@@ -72,7 +74,10 @@ class Auth extends Component {
 			formIsValid = (updatedLoginForm[inputID].valid || updatedLoginForm[inputID].valid === undefined) && formIsValid;
 		}
 
-		this.setState({loginForm: updatedLoginForm, formIsValid: formIsValid});
+		this.setState({
+			loginForm: updatedLoginForm,
+			formIsValid: formIsValid
+		});
 	}
 
 	render() {
@@ -113,6 +118,8 @@ class Auth extends Component {
 
 		return (
 			<article className={classes.Auth}>
+				{/* If the user is authenticated redirect to /dashboard */}
+				{this.props.isAuthenticated ? <Redirect to="/dashboard" /> : null}
 				<h3>{formHeaderMessage}</h3>
 				{form}
 			</article>
