@@ -4,16 +4,18 @@ This application will be the front end portion of the app. It will likely commun
 
 ## Components to build
 
-- [ ] Main Application
-  - [ ] Authentication
-  - [ ] Header
-    - [ ] User Actions
-    - [ ] User Status
+- [X] Main Application
+  - [X] Authentication
+  - [X] Header
+    - [X] User Actions
+    - [X] User Status
   - [ ] Administrative
     - [ ] Reporting
     - [ ] Agents
     - [ ] Call Flow*
-  - [ ] Agent
+  - [ ] Dashboard
+    - [ ] Stats
+  - [ ] Call Center
     - [ ] Phone
       - [ ] Phone Settings
       - [ ] Phone Dialer

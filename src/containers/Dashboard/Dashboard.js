@@ -1,5 +1,3 @@
-//@TODO this will hold the actionbar, agent, and admin controls... I think
-
 import React, { Component } from 'react';
 import classes from './Dashboard.css';
 

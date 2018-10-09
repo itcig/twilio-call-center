@@ -35,6 +35,16 @@ export const getTwilioWorkerAttributes = async workerSID => {
 	return worker;
 };
 
+export const getTwilioWorkerReservations = workerSID => {
+	const reservations = [
+		{
+			sid: 1,
+			// other attributes
+		},
+	];
+	return reservations;
+};
+
 /**
  * Get a Worker's stats
  */
