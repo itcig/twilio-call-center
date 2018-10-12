@@ -1,6 +1,6 @@
 //@TODO this will be at the top of the page and will display the agent's status in the queue as well as actions like logout
 import React, { Component } from 'react';
-import classes from './ActionBar.css';
+import classes from './ActionBar.scss';
 import { withRouter, NavLink } from 'react-router-dom';
 
 import { getTwilioActivities } from '../../common/twilio/activities';

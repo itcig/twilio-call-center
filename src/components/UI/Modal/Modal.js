@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import classes from './Modal.css';
+import classes from './Modal.scss';
 import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component {
-	
+
 	/* prevent unnecessary updating to order summary */
 	shouldComponentUpdate (nextProps, nextState) {
 		return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
@@ -25,5 +25,5 @@ class Modal extends Component {
 		);
 	}
 }
- 
+
 export default Modal;

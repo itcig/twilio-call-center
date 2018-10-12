@@ -9,23 +9,23 @@
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-nav {
+.ActionBar nav {
 	/* placeholder */
 }
 
-ul {
+.ActionBar ul {
 	list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-li {
+.ActionBar li {
 	float: left;
 }
 
-li a,
-.navLinks {
+.ActionBar li a,
+.ActionBar .navLinks {
 	display: block;
     text-align: center;
     padding: 14px 16px;
@@ -33,22 +33,22 @@ li a,
 	color: white;
 }
 
-li a:hover:not(.active) {
+.ActionBar li a:hover:not(.active) {
 	/* border: 2px solid rgb(105, 21, 138); */
     background-color: #b11fa4;
 }
 
-.active {
+.ActionBar .active {
     /* border: 2px solid rgb(105, 21, 138); */
 	background-color: rgba(173, 173, 173, 0.36);
 	color: white;
 }
 
-.activities {
+.ActionBar .activities {
 	transform: translateY(30%);
 }
 
-.dropdownButton {
+.ActionBar .dropdownButton {
 	background-color: rgba(173, 173, 173, 0.36);
     color: white;
     padding: 16px;
@@ -57,13 +57,13 @@ li a:hover:not(.active) {
     cursor: pointer;
 }
 
-.dropdown {
+.ActionBar .dropdown {
 	transform: translateY(30%);
 	position: relative;
     display: inline-block;
 }
 
-.dropdownContent {
+.ActionBar .dropdownContent {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -72,17 +72,17 @@ li a:hover:not(.active) {
     z-index: 1;
 }
 
-.dropdown:hover .dropdownContent {
+.ActionBar .dropdown:hover .dropdownContent {
 	display: block;
 }
 
-.dropdownContent * {
+.ActionBar .dropdownContent * {
 	color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdownContent *:hover {
+.ActionBar .dropdownContent *:hover {
 	background-color: #f1f1f1
 }

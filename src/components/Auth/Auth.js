@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './Auth.css';
+import classes from './Auth.scss';
 import { Redirect } from 'react-router-dom';
 
 import checkValidity from '../../common/utility/validation/validation';
@@ -106,6 +106,7 @@ class Auth extends Component {
 					)) }
 				</fieldset>
 				<div>
+					{/* //@TODO update className to use classes.someClass from auth.scss */}
 					<Button btnType="Success" className="authButton" disabled={!this.state.formIsValid}>Login</Button>
 				</div>
 			</form>

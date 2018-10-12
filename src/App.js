@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DevTools from 'mobx-react-devtools';
-import classes from './App.css';
+import classes from './App.scss';
 
 import  axios from 'axios';
 import  MockAdapter from 'axios-mock-adapter'; //@TODO remove this for production
