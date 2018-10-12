@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './Dashboard.css';
+import classes from './Dashboard.scss';
 
 
 /**
