@@ -7,6 +7,7 @@ class Phone extends Component {
 	state = {
 		phoneNumber: '',
 		dialerKeys: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#'],
+		transferCall: false,
 	};
 
 	updatePhoneNumber = keyValue => {
@@ -25,7 +26,7 @@ class Phone extends Component {
 	}
 
 	endCallHandler = () => {
-		//something
+		//@TODO w/o mobx this needs to be moved to the parent container
 	}
 
 	phoneNumberChangeHandler = () => {
@@ -33,6 +34,7 @@ class Phone extends Component {
 	}
 
 	keyDownHandler = event => {
+		//@TODO add some notification if a non number is used
 		if (document.activeElement.id === 'phoneNumber') {
 			event.preventDefault();
 			let phoneNumber = this.state.phoneNumber;
@@ -51,8 +53,13 @@ class Phone extends Component {
 		}
 	}
 
+	componentDidMount() {
+		document.querySelector('#phoneNumber').addEventListener('search', this.clearPhoneNumber);
+	}
+
 	clearPhoneNumber = event => {
 		event.preventDefault();
+		if (!this.props.activeCall || this.state.transferCall)
 		this.setState({phoneNumber: ''});
 	}
 
@@ -86,8 +93,7 @@ class Phone extends Component {
 					id="phoneNumber"
 					value={this.state.phoneNumber}
 					type="search"
-					onKeyDown={this.keyDownHandler}
-					onsearch={event => this.clearPhoneNumber(event)} />
+					onKeyDown={this.keyDownHandler} />
 				{keypad}
 				{callButton}
 			</section>

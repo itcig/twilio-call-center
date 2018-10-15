@@ -217,6 +217,7 @@ class CallCenter extends Component {
 				{/* //@TODO this likely should be it's own component */}
 				<section className={classes.agentActions}>
 					{agentActions}
+					{/* //@TODO add section for call notes, etc. */}
 				</section>
 
 				<Phone activeCall={this.state.activeCall}/>

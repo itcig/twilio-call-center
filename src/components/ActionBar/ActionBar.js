@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import classes from './ActionBar.scss';
 import { withRouter, NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 import { getTwilioActivities } from '../../common/twilio/activities';
 
@@ -20,15 +21,43 @@ class ActionBar extends Component {
 	 */
 	async getActivities() {
 		//@TODO when using the actual twilio api getTwilioActivities will return a promise
-		const activities = await getTwilioActivities(process.env.TWILIO_TASKROUTER_SID);
+		//const activities = await getTwilioActivities(process.env.TWILIO_TASKROUTER_SID);
+		//const activities = await fetch('/activities');
 
-		const twilio = {
-			...this.state.twilio,
-			activities,
-		};
+		let activities = [];
+		// fetch('/activities')
+		// 	.then(response => {
+		// 		//activities = response.data;
+		// 		activities = response.json();
+		// 	});
 
-		//the object name is the the same as the key so this works the same as {twilio: twilio}
-		this.setState({twilio});
+		fetch('https://jsonplaceholder.typicode.com/todos/1')
+			.then(response => {
+				console.log(response);
+			}).catch(error => {
+				console.log(error);
+			});
+
+
+// "proxy": "http://localhost:3001",
+		// axios.get('http://localhost:3001/api/test')
+		// axios.get('https://jsonplaceholder.typicode.com/todos/1')
+			// .then(response => {
+
+			// 	console.log(response);
+			// 	// activities = response.json();
+
+			// 	// const twilio = {
+			// 	// 	...this.state.twilio,
+			// 	// 	activities,
+			// 	// };
+
+			// 	// //the object name is the the same as the key so this works the same as {twilio: twilio}
+			// 	// this.setState({twilio});
+			// }).catch(error => {
+			// 	console.log(error);
+			// });
+
 	}
 
 	/**
