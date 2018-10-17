@@ -11,6 +11,8 @@ import classes from './Input.scss';
  * @param props.touched bool - if the field was touched by the user
  * @param props.value string|int|bool - the value of the input
  * @param props.changed function - logic to execute on change
+ * @param props.keydown function - logic to execute on keydown
+ * @param props.classes //@TODO add support for passing additional classes if needed
  */
 
 const input = props => {
@@ -26,20 +28,43 @@ const input = props => {
 
 	//@TODO make sure name attribute is being properly added to the element
 	switch (props.elementType) { /* eslint-disable indent */
+
+		case ('hidden') :
+			inputElement = <input
+				className={inputClasses.join(' ')}
+				{...props.elementConfig}
+				value={props.value}
+				onChange={props.changed}
+				/>;
+			break;
+
 		case ('input'):
 			inputElement = <input
 				className={inputClasses.join(' ')}
 				{...props.elementConfig}
 				value={props.value}
-				onChange={props.changed} />;
+				onChange={props.changed}
+				onKeyDown={props.keydown} />;
 			break;
+
+		case ('search'):
+			inputElement = <input
+				className={inputClasses.join(' ')}
+			{...props.elementConfig}
+				value={props.value}
+				onChange={props.changed}
+				onKeyDown={props.keydown} />;
+			break;
+
 		case ('textarea'):
 			inputElement = <textarea
 				className={inputClasses.join(' ')}
 				{...props.elementConfig}
 				value={props.value}
-				onChange={props.changed} />;
+				onChange={props.changed}
+				onKeyDown={props.keydown} />;
 			break;
+
 		case ('select'):
 			inputElement = (
 				<select
@@ -54,12 +79,25 @@ const input = props => {
 				</select>
 			);
 			break;
-		default:
+
+		//@TODO update to take an array
+		case ('checkbox'):
 			inputElement = <input
 				className={inputClasses.join(' ')}
 				{...props.elementConfig}
 				value={props.value}
 				onChange={props.changed} />;
+			break;
+
+
+		// handles text, checkbox, hidden, search, and inputs
+		default:
+			inputElement = <input
+				className={inputClasses.join(' ')}
+				{...props.elementConfig}
+				value={props.value}
+				onChange={props.changed}
+				onKeyDown={props.keydown} />;
 			break;
 	} /* eslint-enable indent */
 
