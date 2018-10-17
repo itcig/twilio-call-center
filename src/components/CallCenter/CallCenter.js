@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classes from './CallCenter.scss';
 
-import { getTwilioWorkerReservations } from '../../common/twilio/worker';
 import { getSubscriberByPhoneNumber } from '../../common/cig/api';
 
 import { copyToClipboard } from '../../common/utility/clipboard';
