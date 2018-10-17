@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Auth.scss';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 import checkValidity from '../../common/utility/validation/validation';
 
@@ -52,6 +52,7 @@ class Auth extends Component {
 	//@TODO is this the best way to handle this scenario?
 	loginSubmitHandler = event => {
 		event.preventDefault();
+		//@TODO make this call twilio's API to verify worker exists based off the worker name
 
 		this.setState({loading: true}); // form submitted update ui
 		this.props.authenticationHandler(); // tell app.js to make api call
@@ -117,12 +118,19 @@ class Auth extends Component {
 			form = <Loader />;
 		}
 
+		/* If REACT_APP_SYS_ADMIN is truthy then add backdoor to the bottom right corner or auth card */
+		let backdoor = null;
+		if (process.env.REACT_APP_SYS_ADMIN) {
+			backdoor = <div className={classes.backdoor}><NavLink to="/setup">...</NavLink></div>;
+		}
+
 		return (
 			<article className={classes.Auth}>
 				{/* If the user is authenticated redirect to /dashboard */}
 				{this.props.isAuthenticated ? <Redirect to="/dashboard" /> : null}
 				<h3>{formHeaderMessage}</h3>
 				{form}
+				{backdoor}
 			</article>
 		);
 	}
