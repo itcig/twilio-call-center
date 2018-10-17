@@ -5,7 +5,7 @@
  * @param {object} rules object keys are the name of the rule and a truthy value will run the test
  */
 
-const checkValidity = (value, rules) => {
+export const checkValidity = (value, rules) => {
 	let isValid = true;
 
 	if (rules) {
@@ -45,14 +45,14 @@ const checkValidity = (value, rules) => {
 };
 
 /* Improved Type Checking */
-const isString = value => (typeof value === 'string' || value instanceof String);
-const isNumber = value => (typeof(Number(value)) === 'number' && !isNaN(Number(value)));
-const isFunction = value => (typeof(value) === 'function' || Object.prototype.toString.call(value).indexOf('Function') > -1);
-const isArray = value => (value.constructor === Array && value instanceof Array && Array.isArray(value));
-const isObject = value => (!isArray(value) && !isFunction(value)) && value === Object(value);
+export const isString = value => (typeof value === 'string' || value instanceof String);
+export const isNumber = value => (typeof(Number(value)) === 'number' && !isNaN(Number(value)));
+export const isFunction = value => (typeof(value) === 'function' || Object.prototype.toString.call(value).indexOf('Function') > -1);
+export const isArray = value => (value.constructor === Array && value instanceof Array && Array.isArray(value));
+export const isObject = value => (!isArray(value) && !isFunction(value)) && value === Object(value);
 
 /* Check if a given data point is empty - this could be written more elegantly, but for readability it's gross */
-const empty = value => {
+export const empty = value => {
 	try {
 		if (value === null || typeof(value) === undefined) {
 			return true;
@@ -89,12 +89,27 @@ const empty = value => {
 
 /* Form Validation */
 // Works for both min and max lengths
-const isLength = (value, length) => (value.length >= length);
+export const isLength = (value, length) => (value.length >= length);
 
-const isEmail = value => {
+export const isEmail = value => {
 	// eslint-disable-next-line
 	const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return regex.test(String(value).toLowerCase());
+};
+
+/* Key Down Event Checking */
+export const keyDownIsAlpha = event => {
+	const input = String.fromCharCode(event.keyCode);
+	// event.keyCode >= 65 && event.keyCode <= 90  -- returns true for alpha
+	return (/[a-zA-Z]/.test(input));
+};
+
+// Allows 0-9, *, #
+export const keyDownIsNumeric = event => {
+	const input = String.fromCharCode(event.keyCode);
+	// event.keyCode >= 48 && event.keyCode <= 57   -- returns true for numeric
+	// event.keyCode >= 96 && event.keyCode <= 105  -- numeric keypad
+	return (/[0-9]/.test(input));
 };
 
 export default checkValidity;
