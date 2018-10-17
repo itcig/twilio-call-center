@@ -99,6 +99,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "mdbreact": "^4.8.1",
     "mobx": "^5.5.0",
     "mobx-react": "^5.2.8",
     "node-sass": "^4.9.3",
