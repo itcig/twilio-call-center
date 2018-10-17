@@ -3,20 +3,20 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import DevTools from 'mobx-react-devtools';
 import classes from './App.scss';
 
-import  axios from 'axios';
-import  MockAdapter from 'axios-mock-adapter'; //@TODO remove this for production
+//import  axios from 'axios';
 
 import Layout from './hoc/Layout/Layout';
 import Auth from './components/Auth/Auth';
+import AddWorker from './components/Workers/AddWorker/AddWorker';
 import Dashboard from './containers/Dashboard/Dashboard';
 import CallCenter from './components/CallCenter/CallCenter';
 
-// import getTwilioActivities from './common/twilio/activities';
 import { getTwilioWorkerAttributes } from './common/twilio/worker';
 
-const mock = new MockAdapter(axios, {delayResponse: 2000});
-
 //@TODO make a color pallet -- https://coolors.co/90309c-c0c999-fd96a9-f62dae-470063
+//@TODO look into Material UI for React -- https://github.com/mui-org/material-ui
+
+//@TODO Update Readme with new local dev scripts etc.
 
 /**
  * Outer Most container
@@ -68,42 +68,34 @@ class App extends Component {
 	}
 
 	authenticationHandler = () => {
-		mock.onGet('/cig-api-url/user-auth')
-			.reply(200, {
+
+		//@TODO this should verify on twilio that the worker exists,
+		//@TODO perhaps add an option to use LDAP afterwards
+		//@TODO also add option to .env for checking if admin or something
+		//@TODO this could allow an admin user to be created with all the appropriate user attributes
+
+
+		//@TODO clean this up now that mock is no longer being used
+		if (true) {
+			const user = {
+				...this.state.user,
 				isAuthenticated: true,
 				isAdmin: true,
-				workerSID: 1138,
-			});
+				twilio: {
+					...this.state.user.twilio,
+					workerSID: 1138,
+				},
+			};
 
-		axios.get('/cig-api-url/user-auth')
-			.then(response => {
-				//console.log('CIG API Auth response ->', response.data);
+			//console.log('auth handler user ->', user);
 
-				/* User is authenticated, update state to reflect and also fetch twilio data */
-				if (response.data.isAuthenticated) {
-					const user = {
-						...this.state.user,
-						isAuthenticated: response.data.isAuthenticated,
-						isAdmin: response.data.isAdmin,
-						twilio: {
-							...this.state.user.twilio,
-							workerSID: response.data.workerSID,
-						},
-					};
-
-					//console.log('auth handler user ->', user);
-
-					//@TODO this will be overwritten if, getTwilioData is successful
-					//@TODO which is why getTwilioData being passed the user object
-					this.setState({user});
-					this.getTwilioData(user);
-				} else {
-					// Display API error message or handle this with a catch
-				}
-			})
-			.catch(error => {
-				console.log('auth handler error ->', error);
-			});
+			//@TODO this will be overwritten if, getTwilioData is successful
+			//@TODO which is why getTwilioData being passed the user object
+			this.setState({user});
+			this.getTwilioData(user);
+		} else {
+			// Display API error message or handle this with a catch
+		}
 	}
 
 	/**
@@ -131,6 +123,11 @@ class App extends Component {
 
 	render() {
 
+		let setupRoute = null;
+		if (process.env.REACT_APP_SYS_ADMIN) {
+			setupRoute = (<Route path="/setup" exact render={props => <AddWorker />} />);
+		}
+
 		return (
 			<div className={classes.App}>
 				<Layout user={this.state.user} activityChangeHandler={this.activityChangeHandler}>
@@ -141,6 +138,9 @@ class App extends Component {
 								<Auth {...props}
 									isAuthenticated={this.state.user.isAuthenticated}
 									authenticationHandler={() => this.authenticationHandler()} />)} />
+
+						{/* Hidden Setup Route */}
+						{setupRoute}
 
 						{/* Catch all for non-authenticated users redirect to /login */}
 						{this.state.user.isAuthenticated ? null : <Redirect path="/" to="/login" />}
