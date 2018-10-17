@@ -4,15 +4,13 @@ import classes from './ActionBar.scss';
 import { withRouter, NavLink } from 'react-router-dom';
 import axios from 'axios';
 
-import { getTwilioActivities } from '../../common/twilio/activities';
-
 /**
  * This will contain the Nav, Agent Actions(logout etc.), Agent Status, and maybe a greeting (welcome [user.firstName] or something?)
  */
 class ActionBar extends Component {
 	state = {
 		twilio: {
-			activities: [],
+			activities: [], // List of activity objects with sid, and friendlyName keys
 		},
 	};
 
@@ -20,44 +18,21 @@ class ActionBar extends Component {
 	 * Retrieve a list of activities (statuses) for users
 	 */
 	async getActivities() {
-		//@TODO when using the actual twilio api getTwilioActivities will return a promise
-		//const activities = await getTwilioActivities(process.env.TWILIO_TASKROUTER_SID);
-		//const activities = await fetch('/activities');
+		try {
+			let activities = await axios.get('/taskrouter/activities');
+			activities = activities.data;
+			const twilio = {
+				...this.state.twilio,
+				activities,
+			};
 
-		let activities = [];
-		// fetch('/activities')
-		// 	.then(response => {
-		// 		//activities = response.data;
-		// 		activities = response.json();
-		// 	});
-
-		fetch('https://jsonplaceholder.typicode.com/todos/1')
-			.then(response => {
-				console.log(response);
-			}).catch(error => {
-				console.log(error);
-			});
-
-
-// "proxy": "http://localhost:3001",
-		// axios.get('http://localhost:3001/api/test')
-		// axios.get('https://jsonplaceholder.typicode.com/todos/1')
-			// .then(response => {
-
-			// 	console.log(response);
-			// 	// activities = response.json();
-
-			// 	// const twilio = {
-			// 	// 	...this.state.twilio,
-			// 	// 	activities,
-			// 	// };
-
-			// 	// //the object name is the the same as the key so this works the same as {twilio: twilio}
-			// 	// this.setState({twilio});
-			// }).catch(error => {
-			// 	console.log(error);
-			// });
-
+			this.setState({twilio});
+		} catch (error) {
+			//@TODO some ui output?
+			if (process.env.NODE_ENV === 'development') {
+				console.error(error);
+			}
+		}
 	}
 
 	/**
@@ -73,21 +48,19 @@ class ActionBar extends Component {
 
 		//@TODO if the status becomes it's own component then move this
 		/* Build array of JSX Options for the status dropdown */
-		const activitiesOptions = this.state.twilio.activities
+		const activityOptions = this.state.twilio.activities
 			.map(activity => (
-				<option
-					key={activity.toLowerCase()}
-					value={activity.toLowerCase()}
-				>{activity.charAt(0).toUpperCase() + activity.substr(1)}</option>
+				<option key={activity.sid} value={activity.friendlyName.toLowerCase()} >
+					{activity.friendlyName.charAt(0).toUpperCase() + activity.friendlyName.substr(1)}
+				</option>
 			));
 
 		return (
 			<header className={classes.ActionBar}>
-
 				{/* //@TODO make this it's own component?  */}
 				<div className={classes.activities}>
 					<select value={this.props.user.twilio.activity.toLowerCase()} onChange={event => this.props.activityChangeHandler(event)}>
-						{activitiesOptions}
+						{activityOptions}
 					</select>
 				</div>
 
